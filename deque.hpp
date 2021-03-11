@@ -286,7 +286,6 @@ public:
             countInAll = _countInAll;nodeptr = _nodeptr;dataptr = _dataptr;
             return *this;
 		}
-
 		iterator operator++(int) {
 		    iterator temp(*this);
 		    if(countInAll == theQueue->totalNum - 1){ // end();
@@ -562,10 +561,6 @@ public:
         }
         return *this;
 	}
-	/**
-	 * access specified element with bounds checking
-	 * throw index_out_of_bound if out of bound.
-	 */
 	void getPosition(int _countInAll,nodePointer & _nodeptr,typename myContainer::List<T>::Node* & _dataptr) const{
 	    _nodeptr = Controller.head;
 	    while(_countInAll >= _nodeptr->data->dataSet.size()){
@@ -574,7 +569,6 @@ public:
 	    }
 	    _dataptr = &(_nodeptr->data->dataSet[_countInAll]);
 	}
-
 	T & at(const size_t &pos) {
         if(pos < 0 || pos >= totalNum) throw index_out_of_bound();
         int tempcount = pos;nodePointer nodeptr = nullptr;typename myContainer::List<T>::Node* dataptr = nullptr;
@@ -599,25 +593,14 @@ public:
         getPosition(tempcount,nodeptr,dataptr);
         return *(dataptr->data);
 	}
-	/**
-	 * access the first element
-	 * throw container_is_empty when the container is empty.
-	 */
 	const T & front() const {
 	    if(totalNum == 0) throw container_is_empty();
         return *((Controller[0].data)->dataSet[0].data);
 	}
-	/**
-	 * access the last element
-	 * throw container_is_empty when the container is empty.
-	 */
 	const T & back() const {
         if(totalNum == 0) throw container_is_empty();
         return *((Controller.back().data)->dataSet.back().data);
 	}
-	/**
-	 * returns an iterator to the beginning.
-	 */
 	iterator begin() {
 	    if(totalNum == 0){return end();}
 	    return iterator(this,0,Controller.head,Controller.head->data->dataSet.head,true);
@@ -625,40 +608,22 @@ public:
 	const_iterator cbegin() const {
         return const_iterator(this,0,0,0,true);
     }
-	/**
-	 * returns an iterator to the end.
-	 */
 	iterator end() {
 	    return iterator(this,this->totalNum, nullptr, nullptr,true);
 	}
 	const_iterator cend() const {
         return const_iterator(this,this->totalNum,-1,-1,false);
     }
-	/**
-	 * checks whether the container is empty.
-	 */
 	bool empty() const {
 	    return totalNum == 0;
 	}
-	/**
-	 * returns the number of elements
-	 */
 	size_t size() const {
 	    return totalNum;
 	}
-	/**
-	 * clears the contents
-	 */
 	void clear() {
         this->Controller.clear();
         totalNum = 0;
     }
-	/**
-	 * inserts elements at the specified locat on in the container.
-	 * inserts value before pos
-	 * returns an iterator pointing to the inserted value
-	 *     throw if the iterator is invalid or it point to a wrong place.
-	 */
 	iterator insert(iterator pos, const T &value) {
 	    if(totalNum == 0 && pos == end()){
 	        this->push_back(value);
@@ -694,12 +659,6 @@ public:
 	    getPosition(pos.countInAll,_nodeptr,_dataptr);
         return iterator(this,pos.countInAll,_nodeptr,_dataptr);
 	}
-	/**
-	 * removes specified element at pos.
-	 * removes the element at pos.
-	 * returns an iterator pointing to the following element, if pos pointing to the last element, end() will be returned.
-	 * throw if the container is empty, the iterator is invalid or it points to a wrong place.
-	 */
 	iterator erase(iterator pos) {
         if(pos.theQueue != this || pos.countInAll >= totalNum) throw invalid_iterator();
 	    if(this->totalNum == 0) throw container_is_empty();
@@ -727,9 +686,6 @@ public:
         getPosition(pos.countInAll,_nodeptr,_dataptr);
         return iterator(this,pos.countInAll,_nodeptr,_dataptr);
 	}
-	/**
-	 * adds an element to the end
-	 */
 	void push_back(const T &value) {
         if(totalNum == 0){
             Controller.push_front(new Block());
@@ -746,10 +702,6 @@ public:
             }
         }
 	}
-	/**
-	 * removes the last element
-	 *     throw when the container is empty.
-	 */
 	void pop_back() {
         if(!totalNum) throw container_is_empty();
         (Controller.back().data)->dataSet.erase((Controller.back().data)->dataSet.size() - 1);
@@ -758,9 +710,6 @@ public:
             Controller.erase(Controller.size() - 1);
         }
 	}
-	/**
-	 * inserts an element to the beginning.
-	 */
 	void push_front(const T &value) {
 	    if(totalNum == 0){
 	        Controller.push_front(new Block());
@@ -778,10 +727,6 @@ public:
             }
 	    }
 	}
-	/**
-	 * removes the first element.
-	 *     throw when the container is empty.
-	 */
 	void pop_front() {
 	    if(!totalNum) throw container_is_empty();
         (Controller[0].data)->dataSet.erase(0);
