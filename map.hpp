@@ -29,8 +29,8 @@ namespace sjtu {
         private:
             map * toMap;
             Nodeptr toNode;
-            bool checkBegin() const{return toNode == toMap->theTree.getMin(toMap->theTree.root);}
-            bool checkMax() const {return toNode == toMap->theTree.getMax(toMap->theTree.root);}
+            bool checkBegin() const{return toMap->size() == 0 || toNode == toMap->theTree.getMin(toMap->theTree.root);}
+            bool checkMax() const {return toMap->size() == 0 || toNode == toMap->theTree.getMax(toMap->theTree.root);}
             bool isValid;bool isEnd;
         public:
             iterator():toMap(nullptr),toNode(nullptr),isValid(false),isEnd(false){}
@@ -102,8 +102,8 @@ namespace sjtu {
         private:
             const map * toMap;
             Nodeptr toNode;
-            bool checkBegin() const{return toNode == toMap->theTree.getMin(toMap->theTree.root);}
-            bool checkMax() const {return toNode == toMap->theTree.getMax(toMap->theTree.root);}
+            bool checkBegin() const{return toMap->size() == 0 || toNode == toMap->theTree.getMin(toMap->theTree.root);}
+            bool checkMax() const {return toMap->size() == 0 || toNode == toMap->theTree.getMax(toMap->theTree.root);}
             bool isValid;bool isEnd;
         public:
             const_iterator():toMap(nullptr),toNode(nullptr),isValid(false),isEnd(false){}
