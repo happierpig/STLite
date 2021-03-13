@@ -203,7 +203,7 @@ namespace sjtu {
             }
         }
 
-        const T & operator[](const Key &key) const {
+        const T & operator[](const Key &key) const { // used for const object
             Nodeptr tmp = theTree.search(theTree.getRoot(),key);
             if(!tmp) throw index_out_of_bound();
             return tmp->value->second;
@@ -240,6 +240,7 @@ namespace sjtu {
         }
 
         void erase(iterator pos) {
+            if(this != pos.toMap) throw invalid_iterator();
             if(!pos.isValid || pos.isEnd) throw invalid_iterator();
             theTree.erase(pos.toNode->value->first,pos.toNode);
         }
