@@ -261,6 +261,15 @@ namespace sjtu {
             if(!tmpPtr) return cend();
             else return const_iterator(this,tmpPtr,true, false);
         }
+
+        // for test
+//	void printInorder(){
+//	    theTree.inorderTravel(theTree.root);
+//	}
+//
+//    void printPreorder(){
+//        theTree.preorderTravel(theTree.root);
+//    }
     };
 
 }

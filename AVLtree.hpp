@@ -319,7 +319,7 @@ namespace myContainer {
         size_t size() const {return this->nodeNum;}
 
         Node * getRoot()const {return root;}
-        // for test
+//         for test
 //        void print() {
 //            Node *tmp = getMin(this->root);
 //            while (tmp != nullptr) {
@@ -330,12 +330,12 @@ namespace myContainer {
 //        void inorderTravel(Node * _root){
 //            if(_root == nullptr) return;
 //            inorderTravel(_root->leftson);
-//            std::cout << "key : " << _root->value.first << " data : " << _root->value.second << " height : " << _root->height << std::endl;
+//            std::cout << "key : " << _root->value->first << " data : " << _root->value->second << " height : " << _root->height << std::endl;
 //            inorderTravel(_root->rightson);
 //        }
 //        void preorderTravel(Node * _root){
 //            if(_root == nullptr) return;
-//            std::cout << "key : " << _root->value.first << " data : " << _root->value.second << " height : " << _root->height << std::endl;
+//            std::cout << "key : " << _root->value->first << " data : " << _root->value->second << " height : " << _root->height << std::endl;
 //            preorderTravel(_root->leftson);
 //            preorderTravel(_root->rightson);
 //        }
