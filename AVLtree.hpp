@@ -275,6 +275,7 @@ namespace myContainer {
                         if (_parent->rightson == target) _parent->rightson = _successor;
                         else _parent->leftson = _successor;
                     }
+                    Node * _successor_parent = _successor->parent;
                     target->leftson->parent = _successor;
                     target->rightson->parent = _successor;
                     if (_successor->rightson) {
@@ -285,6 +286,7 @@ namespace myContainer {
                     _successor->leftson = target->leftson;
                     _successor->rightson = target->rightson;
                     delete target;
+                    assistant_height(_successor_parent);
                     return true;
                 }else{
                     if(_parent){
@@ -295,6 +297,7 @@ namespace myContainer {
                     _successor->leftson = target->leftson;
                     _successor->parent = _parent;
                     delete target;
+                    assistant_height(_successor);
                     return true;
                 }
 //                     wrong writing:
