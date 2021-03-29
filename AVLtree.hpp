@@ -326,6 +326,7 @@ namespace myContainer {
 //                std::cout << "key : " << tmp->value.first << "data : " << tmp->value.second << " height : " << tmp->height << std::endl;
 //                tmp = getSuccessor(tmp);
 //            }
+//            inorderTravel(root);
 //        }
 //        void inorderTravel(Node * _root){
 //            if(_root == nullptr) return;
