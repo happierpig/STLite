@@ -149,7 +149,7 @@ namespace myContainer {
 }
 namespace sjtu {
 
-    const static int MaxBlock = 400;
+    const static int MaxBlock = 400; //sqrt(data size);
     const static int HalfBlock = 200;
     const static int MergeBoundary = 250;
     const static int MinBlock = 50;
@@ -378,7 +378,7 @@ public:
             return !(theQueue == rhs.theQueue && countInAll == rhs.countInAll && nodeptr == rhs.nodeptr && validity == rhs.validity);
         }
 	};
-	class const_iterator {
+	class const_iterator { //used for const object
         friend deque<T>;
     private:
         bool validity = true;

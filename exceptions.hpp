@@ -37,3 +37,4 @@ class container_is_empty : public exception {
 }
 
 #endif
+ 
