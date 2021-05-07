@@ -33,7 +33,7 @@ public:
 //	     wrong: invalid when doublespace();
 //	     T ** ptr = nullptr;
 //       right: the space used by vector is constant;
-         vector<T> * ptr;
+         vector<T> * ptr; // using position of vector
 		 int pos;
 
 	public:

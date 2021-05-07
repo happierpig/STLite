@@ -6,10 +6,6 @@
 #include "exceptions.hpp"
 
 namespace sjtu {
-
-/**
- * a container like std::priority_queue which is a heap internal.
- */
 template<typename T, class Compare = std::less<T>>
 class priority_queue {
 private:
@@ -92,7 +88,6 @@ public:
 	    other.elemNum = 0;
 	}
 };
-
 }
 
 #endif
